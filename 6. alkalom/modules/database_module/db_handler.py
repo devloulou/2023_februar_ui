@@ -18,6 +18,18 @@ class DBHandler:
             logging.error(f"Error occured: {str(e)}")
             raise
 
+    def run_select_query(self, query):
+        try:
+            with self.engine.connect() as conn:
+                result = conn.execute(text(query))
+                conn.commit()
+            logging.info("Sucess transaction execute")
+        except Exception as e:
+            conn.rollback()
+            logging.error(f"Error occured: {str(e)}")
+            raise
+
+        return result
 
 
 if __name__ == '__main__':

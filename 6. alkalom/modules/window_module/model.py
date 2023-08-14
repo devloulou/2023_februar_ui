@@ -40,3 +40,17 @@ class MyTableModel(QAbstractTableModel):
         # self._data.clear()
         self._data = []
         self.endRemoveRows()
+
+    def removeRow(self, idx: int):
+        self.beginRemoveRows(QModelIndex(), idx, idx)        
+        self._data.pop(idx)
+        self.endRemoveRows()
+
+    def setData(self, index, value, role=Qt.ItemDataRole.EditRole):
+        if role == Qt.ItemDataRole.EditRole:
+            self._data[index.row()][index.column()] = value
+            self.dataChanged.emit(index, index)
+
+            return True
+        
+        return False
