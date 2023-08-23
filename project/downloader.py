@@ -36,7 +36,7 @@ class MetaDownloader(QMainWindow):
 
 
     def fnc_add_folder(self):
-        print("Megkattintottam az Add folder menüt")
+        self.movie_browser.movie_list.start_downloader()
 
     def fnc_add_popular_movies(self):
         print("Megkattintottam az Add Popular Movies menüt")

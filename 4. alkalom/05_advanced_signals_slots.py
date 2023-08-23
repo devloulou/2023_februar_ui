@@ -28,7 +28,7 @@ class MainWindow(QWidget):
         self.custom_widget.custom_signal.connect(self.handle_custom_signal)
 
     def handle_custom_signal(self, message):
-        print(message)
+        print("|")
 
 if __name__ == '__main__':
     app = QApplication([])
